@@ -1,9 +1,11 @@
+licenses(["notice"])
+
 cc_binary(
     name = "_jsonnet.so",
     srcs = ["_jsonnet.c"],
     linkshared = 1,
     deps = [
-        "//core:libjsonnet",
+        label("../core:libjsonnet"),
         "@default_python//:headers",
     ],
 )

@@ -1,3 +1,4 @@
+licenses(["notice"])
 package(default_visibility = ["//visibility:public"])
 
 cc_library(
@@ -29,10 +30,10 @@ cc_library(
         "vm.h",
     ],
     deps = [
-        "//include:libjsonnet",
-        "//include:libjsonnet_fmt",
-        "//stdlib:std",
-        "//third_party/md5:libmd5",
+        label("../include:libjsonnet"),
+        label("../include:libjsonnet_fmt"),
+        label("../stdlib:std"),
+        label("../third_party/md5:libmd5"),
     ],
     linkopts = ["-lm"],
     includes = ["."],
@@ -44,7 +45,7 @@ cc_test(
     deps = [
         ":libjsonnet",
         # Note: On Ubuntu, apt-get install libgtest-dev google-mock
-        "//external:googletest_main",
+        "//third_party/cc/gtest:gtest_main",
     ],
 )
 
@@ -53,7 +54,7 @@ cc_test(
     srcs = ["parser_test.cpp"],
     deps = [
         ":libjsonnet",
-        "//external:googletest_main",
+        "//third_party/cc/gtest:gtest_main",
     ],
 )
 
@@ -62,6 +63,6 @@ cc_test(
     srcs = ["libjsonnet_test.cpp"],
     deps = [
         ":libjsonnet",
-        "//external:googletest_main",
+        "//third_party/cc/gtest:gtest_main",
     ],
 )
