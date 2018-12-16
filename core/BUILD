@@ -35,6 +35,10 @@ cc_library(
         label("../stdlib:std"),
         label("../third_party/md5:libmd5"),
     ],
+    copts = [
+        # zhongming: Suppress compile warnings.
+        "-Wno-unused-variable",
+    ],
     linkopts = ["-lm"],
     includes = ["."],
 )
